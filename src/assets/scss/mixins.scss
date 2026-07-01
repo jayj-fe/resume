@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/*
+ * Function Set File
+ * Last Updata : 2021.07.28
+ * Last Updata Author : jaj.j
+ * Comment :
+ *
+ */
+
+/* Layout Folder Img Background Function */
+@function layout-imgbg($img-name){
+    @return '/asset/images/front/layout/' + $img-name;
+}
+
+/* 한줄 표시 */
+@mixin ellipse-one($wid:100%){
+	width:$wid; 
+	overflow:hidden; 
+	text-overflow:ellipsis; 
+	white-space:nowrap;
+}
+
+/* TEXT 숨기기 */
+@mixin text-hide(){
+	position:absolute;
+	overflow:hidden;
+	font-size:0;
+	width:0;
+	height:0;
+	top:-1px;
+	left:-1px;
+	opacity:0;
+}
+
+/* Text 숨기기 - IR기법*/
+@mixin text-hide-ir(){
+	overflow:hidden;
+	text-indent:-9999px;
+}
+
+/* 공통 최대사이즈 1200px */
+@mixin max-width-center(){
+	max-width:1200px;
+	margin:0 auto;
+}
