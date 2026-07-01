@@ -8,6 +8,7 @@ export const metadata = {
     template: "%s | Jay.J",
   },
   description: "Jay.J의 프론트엔드 이력서와 블로그",
+  manifest: "/favicons/manifest.json",
 };
 
 export default function RootLayout({ children }) {
