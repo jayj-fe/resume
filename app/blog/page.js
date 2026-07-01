@@ -4,6 +4,17 @@ import { getCategories, getPosts } from "@/lib/posts";
 
 export const metadata = {
   title: "Blog",
+  description:
+    "Jay.J가 프론트엔드 개발, Next.js, React, 웹 성능과 접근성에 대해 기록하는 기술 블로그입니다.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog | Jay.J",
+    description:
+      "Jay.J가 프론트엔드 개발, Next.js, React, 웹 성능과 접근성에 대해 기록하는 기술 블로그입니다.",
+    url: "/blog",
+  },
 };
 
 export const revalidate = 3600;

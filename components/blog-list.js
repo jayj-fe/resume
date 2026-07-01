@@ -78,7 +78,7 @@ export function BlogList({ posts, selectedCategory }) {
                   {post.categories.map((category) => (
                     <Link
                       key={category}
-                      href={`/blog?category=${category}`}
+                      href={`/blog?category=${encodeURIComponent(category)}`}
                       className="blog-card__category"
                     >
                       <Tag size={12} aria-hidden />
@@ -92,10 +92,10 @@ export function BlogList({ posts, selectedCategory }) {
                 >
                   {post.title}
                 </Link>
-                <p className="blog-card__date">
+                <time className="blog-card__date" dateTime={post.date}>
                   <CalendarDays size={15} aria-hidden />
                   {post.date}
-                </p>
+                </time>
                 <p className="blog-card__excerpt">
                   {post.excerpt}
                 </p>

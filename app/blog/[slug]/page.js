@@ -27,6 +27,31 @@ export async function generateMetadata({ params }) {
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: `/blog/${post.slug}`,
+      publishedTime: post.date,
+      tags: post.categories,
+      images: post.img
+        ? [
+            {
+              url: post.img,
+              alt: post.title,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: post.img ? [post.img] : undefined,
+    },
   };
 }
 
@@ -58,7 +83,7 @@ export default async function BlogDetailPage({ params }) {
             {post.categories.map((category) => (
               <Link
                 key={category}
-                href={`/blog?category=${category}`}
+                href={`/blog?category=${encodeURIComponent(category)}`}
                 className="inline-flex items-center gap-1 text-xs font-black uppercase text-moss transition hover:text-clay dark:text-[#9bbf95] dark:hover:text-[#e2a08e]"
               >
                 <Tag size={12} aria-hidden />
@@ -69,10 +94,13 @@ export default async function BlogDetailPage({ params }) {
           <h1 className="mt-4 text-4xl font-black leading-tight text-ink sm:text-5xl dark:text-white">
             {post.title}
           </h1>
-          <p className="post-content__date mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400">
+          <time
+            className="post-content__date mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400"
+            dateTime={post.date}
+          >
             <CalendarDays size={15} aria-hidden />
             {post.date}
-          </p>
+          </time>
         </header>
         <div className="prose-post mt-8">
           <ReactMarkdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
