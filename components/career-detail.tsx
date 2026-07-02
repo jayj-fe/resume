@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { careerCompanies } from "@/lib/career";
+import { TechBadges } from "@/components/tech-badges";
 import type { CareerProject } from "@/lib/types/career";
 
 interface CareerSectionProps {
@@ -14,10 +14,6 @@ interface CareerListProps {
 interface CareerDetailProps {
   projects: CareerProject[];
 }
-
-const companyLabelBySlug = Object.fromEntries(
-  careerCompanies.map((company) => [company.slug, company.label]),
-);
 
 function CareerSection({ label, children }: CareerSectionProps) {
   return (
@@ -90,7 +86,7 @@ export function CareerDetail({ projects }: CareerDetailProps) {
           ))}
 
           <CareerSection label="사용기술">
-            <p className="career-detail__tech">{project.tech}</p>
+            <TechBadges tech={project.tech} />
           </CareerSection>
         </article>
       ))}

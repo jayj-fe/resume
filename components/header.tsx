@@ -55,7 +55,7 @@ export function Header() {
             <Github size={18} aria-hidden />
           </a>
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/jeongjae-lee-279749219/?skipRedirect=true"
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"

@@ -16,6 +16,22 @@ export const careerCompanies: CareerCompany[] = [
 export const careerProjects: CareerProject[] = [
   {
     company: "hankookilbo",
+    title: "한국일보 뉴플랫폼 모니터링 시스템 운영",
+    period: "2026. 04. ~ 2026. 07.",
+    role: ["프론트엔드 서비스 모니터링 및 운영 관리"],
+    issues: [
+      "대규모 트래픽 유입 시 발생하는 클라이언트 사이드 병목 및 런타임 에러의 실시간 관측 필요",
+      "릴리즈 이후 실시간 장애 징후 조기 파악 및 전사 전파를 위한 중앙 모니터링 체계 필요",
+    ],
+    tasks: [
+      "DataDog을 활용한 실시간 서비스 에러 관측, 로그 트래킹 및 상시 이슈 대응",
+      "클라이언트 사이드 에러 모니터링 및 브라우저 성능 지표 수집·분석",
+      "장애 예방을 위한 DataDog 커스텀 대시보드 관리 및 장애 징후 조기 탐지 체계 운영",
+    ],
+    tech: "Git, Next.js, DataDog, Jenkins",
+  },
+  {
+    company: "hankookilbo",
     title: "한국일보 독자 데이터 트래킹 및 파이프라인 관리",
     period: "2026. 02. ~ 2026. 06.",
     role: ["데이터 트래킹 관리 및 로그 데이터 적재"],
@@ -29,7 +45,7 @@ export const careerProjects: CareerProject[] = [
       "AWS Athena를 활용한 Hmap 2.0 로그 DB 검색 및 수집 정합성 데이터 최종 검증",
       "기사 지면 내 유저 행동 로그 수집 안정성 상시 모니터링 및 유실 방지",
     ],
-    tech: "Git, Next.js, React.js, GTM, GA4, Hmap 1.0, Hmap 2.0 (DLA), AWS Athena, SQL",
+    tech: "Git, Next.js, GTM, GA4, Hmap 1.0, Hmap 2.0 (DLA), AWS Athena, SQL, Jenkins",
   },
   {
     company: "hankookilbo",
@@ -45,7 +61,7 @@ export const careerProjects: CareerProject[] = [
       "AWS CloudFront 기반 메인(SSR) 및 리스트(CSR) 하이브리드 서빙 아키텍처 설계",
       "외주사 소스코드 리뷰 진행 및 전사 기술 표준화를 위한 파트너사 커뮤니케이션 리드",
     ],
-    tech: "Next.js, React.js, TypeScript, FSD Architecture, AWS CloudFront, AWS EC2",
+    tech: "Git, Next.js, TypeScript, FSD Architecture, AWS CloudFront, AWS EC2, Jenkins",
   },
   {
     company: "hankookilbo",
@@ -62,7 +78,7 @@ export const careerProjects: CareerProject[] = [
       "엄격한 TypeScript 설계 및 예외 처리 가드로 실시간 데이터의 런타임 에러 차단",
       "피드백 API 연동 및 추천 질문 인터페이스 구현으로 대화형 UI/UX 고도화",
     ],
-    tech: "Git, React.js, TypeScript, useContext, REST API, CSS Modules",
+    tech: "Git, React.js, TypeScript, useContext, REST API, CSS Modules, Jenkins",
   },
   {
     company: "hankookilbo",
@@ -78,7 +94,7 @@ export const careerProjects: CareerProject[] = [
       "구독, 보관함 등 주요 기능 모듈화로 컴포넌트 재사용률 70% 이상 확보",
       "기존 백엔드 결합도를 낮추고 프론트엔드 중심의 데이터 상태 관리 인터페이스 구조 확립",
     ],
-    tech: "Git, React.js, TypeScript, Tailwind CSS, REST API, CDN",
+    tech: "Git, React.js, TypeScript, Tailwind CSS, REST API, CDN, Jenkins",
   },
   {
     company: "hankookilbo",
@@ -94,7 +110,7 @@ export const careerProjects: CareerProject[] = [
       "공통 [ui] 및 [utils] 패키지를 적극 공유·재활용하여 복잡한 도메인 간 개발 공수 단축",
       "Zustand를 도입해 모듈별 데이터 상태 관리를 최적화하고 복잡한 리렌더링 방지 및 UI 고도화",
     ],
-    tech: "React.js, Material UI(MUI), Zustand, Yarn Workspaces(Monorepo), JavaScript, Webpack, PM2, AWS EC2, Git",
+    tech: "Git, React.js, React-Query, Material UI(MUI), Zustand, Yarn Workspaces(Monorepo), Jenkins",
   },
   {
     company: "hankookilbo",
@@ -134,7 +150,7 @@ export const careerProjects: CareerProject[] = [
       "Code Splitting 및 이미지 Preload 적용으로 초기 렌더링 성능 최적화",
       "무한 스크롤 및 동적 후보자 비교 카드 등 반응형 UI/UX 개발",
     ],
-    tech: "Git, React.js, React-Query, JavaScript, HTML5, Sass, REST API",
+    tech: "Git, React.js, React-Query, JavaScript, SASS, REST API, Jenkins",
   },
   {
     company: "hankookilbo",
@@ -157,22 +173,6 @@ export const careerProjects: CareerProject[] = [
   },
   {
     company: "hankookilbo",
-    title: "한국일보 뉴플랫폼 모니터링 시스템 운영",
-    period: "2023. 07. ~ 2026. 02.",
-    role: ["프론트엔드 서비스 모니터링 및 운영 관리"],
-    issues: [
-      "대규모 트래픽 유입 시 발생하는 클라이언트 사이드 병목 및 런타임 에러의 실시간 관측 필요",
-      "릴리즈 이후 실시간 장애 징후 조기 파악 및 전사 전파를 위한 중앙 모니터링 체계 필요",
-    ],
-    tasks: [
-      "DataDog을 활용한 실시간 서비스 에러 관측, 로그 트래킹 및 상시 이슈 대응",
-      "클라이언트 사이드 에러 모니터링 및 브라우저 성능 지표 수집·분석",
-      "장애 예방을 위한 DataDog 커스텀 대시보드 관리 및 장애 징후 조기 탐지 체계 운영",
-    ],
-    tech: "Git, Next.js, React.js, DataDog",
-  },
-  {
-    company: "hankookilbo",
     title: "한국일보 사이트(레거시)",
     period: "2023. 07. ~ 2026. 02.",
     role: ["FE 운영 관리 및 서비스 고도화"],
@@ -186,7 +186,7 @@ export const careerProjects: CareerProject[] = [
       "미디어 자원 레이지 로딩(Lazy Loading) 및 정적 파일 압축을 통한 웹 성능 개선 (LCP 지표 50% ↓)",
       "표준 태그(Canonical) 최적화 및 시맨틱 마크업 적용 (구글 크롤링 완료 데이터 추가 확보 및 서버 오류율 97% 감소)",
     ],
-    tech: "Git, Gulp, HTML5, CSS3, JavaScript, jQuery, React.js, CDN",
+    tech: "Git, Gulp, HTML5, CSS3, JavaScript, jQuery, React.js, CDN, Jenkins",
   },
   {
     company: "witplus",
