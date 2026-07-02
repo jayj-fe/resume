@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import { ScrollToTopButton } from "@/components/scroll-to-top";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jayj-fe.github.io";
 
@@ -88,7 +88,7 @@ export default function RootLayout({ children }) {
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>
-        {/* <Footer /> */}
+        <ScrollToTopButton />
       </body>
     </html>
   );

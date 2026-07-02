@@ -1,5 +1,46 @@
+# dependencies
 node_modules/
+.pnpm-store/
+
+# next.js
 .next/
 out/
-.DS_Store
+
+# production
+build/
+dist/
+
+# env
+.env
+.env*.local
+
+# debug / logs
 *.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# testing
+coverage/
+
+# vercel / turbo
+.vercel/
+.turbo/
+
+# os
+.DS_Store
+Thumbs.db
+
+# ide
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# temp / generated cache
+.favicon-tmp/
