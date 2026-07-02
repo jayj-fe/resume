@@ -3,7 +3,6 @@
 import {
   cpSync,
   existsSync,
-  mkdirSync,
   readdirSync,
   readFileSync,
   rmSync,
@@ -50,6 +49,10 @@ function patchManifestLinks(dir) {
     }
   }
 }
+
+console.log("Cleaning previous build artifacts...");
+rmSync(path.join(rootDir, ".next"), { recursive: true, force: true });
+rmSync(outDir, { recursive: true, force: true });
 
 console.log("Building static site for GitHub Pages...");
 execSync("pnpm build", { cwd: rootDir, stdio: "inherit", env: buildEnv });
