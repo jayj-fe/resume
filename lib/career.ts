@@ -98,22 +98,6 @@ export const careerProjects: CareerProject[] = [
   },
   {
     company: "hankookilbo",
-    title: "한국일보 관리자 사이트",
-    period: "2023. 07. ~ 2025. 12.",
-    role: ["신규 기능 개발 및 서비스 고도화"],
-    issues: [
-      "Angular와 React 등 이기종 라이브러리가 공존하는 대형 CMS의 독립적 기능 확장 및 유연성 확보 필요",
-      "복잡한 전역 상태 구조로 인한 컴포넌트 간 의존성 증대 및 불필요한 리렌더링 현상 제어 필요",
-    ],
-    tasks: [
-      "Yarn 모노레포 환경을 활용하여 app-shell 구조 아래 React 기반 도메인 서비스(vms 등) 전담 개발",
-      "공통 [ui] 및 [utils] 패키지를 적극 공유·재활용하여 복잡한 도메인 간 개발 공수 단축",
-      "Zustand를 도입해 모듈별 데이터 상태 관리를 최적화하고 복잡한 리렌더링 방지 및 UI 고도화",
-    ],
-    tech: "Git, React.js, React-Query, Material UI(MUI), Zustand, Yarn Workspaces(Monorepo), Jenkins",
-  },
-  {
-    company: "hankookilbo",
     title: "한국일보 봉황대기",
     period: "2024. 07. ~ 2024. 08.",
     role: ["서비스 고도화 및 FE 아키텍처 개선"],
@@ -178,6 +162,22 @@ export const careerProjects: CareerProject[] = [
   },
   {
     company: "hankookilbo",
+    title: "한국일보 관리자 사이트",
+    period: "2023. 07. ~ 2025. 12.",
+    role: ["신규 기능 개발 및 서비스 고도화"],
+    issues: [
+      "Angular와 React 등 이기종 라이브러리가 공존하는 대형 CMS의 독립적 기능 확장 및 유연성 확보 필요",
+      "복잡한 전역 상태 구조로 인한 컴포넌트 간 의존성 증대 및 불필요한 리렌더링 현상 제어 필요",
+    ],
+    tasks: [
+      "Yarn 모노레포 환경을 활용하여 app-shell 구조 아래 React 기반 도메인 서비스(vms 등) 전담 개발",
+      "공통 [ui] 및 [utils] 패키지를 적극 공유·재활용하여 복잡한 도메인 간 개발 공수 단축",
+      "Zustand를 도입해 모듈별 데이터 상태 관리를 최적화하고 복잡한 리렌더링 방지 및 UI 고도화",
+    ],
+    tech: "Git, React.js, React-Query, Material UI(MUI), Zustand, Yarn Workspaces(Monorepo), Jenkins",
+  },
+  {
+    company: "hankookilbo",
     title: "한국일보 사이트(레거시)",
     period: "2023. 07. ~ 2026. 02.",
     role: ["FE 운영 관리 및 서비스 고도화"],
@@ -195,19 +195,6 @@ export const careerProjects: CareerProject[] = [
   },
   {
     company: "witplus",
-    title: "웹 사이트 유지보수 프로젝트 (다이소몰, 엔터식스 등)",
-    period: "2019. 11. ~ 2023. 03.",
-    role: ["서비스 고도화"],
-    issues: ["레거시 스크립트 오류의 신속한 디버깅 및 실시간 대응 필요"],
-    tasks: [
-      "대형 쇼핑몰 및 유통사 웹/모바일 서비스의 UI/UX 상시 유지보수 및 정기 고도화",
-      "프로모션/이벤트 페이지 긴급 대응 및 신속한 UI 반영",
-      "레거시 마크업 구조 개선 및 스크립트 오류 디버깅",
-    ],
-    tech: "Git, HTML5, CSS3, JavaScript, jQuery, Cross-Browsing",
-  },
-  {
-    company: "witplus",
     title: "Vue.js 기반 SPA 구축 프로젝트 (와인나라, 우주부품시험연구포털 등 2개의 프로젝트)",
     period: "2021. 07. ~ 2022. 04.",
     role: ["FE 개발 리드 및 일정관리", "신규 기능 개발"],
@@ -222,6 +209,19 @@ export const careerProjects: CareerProject[] = [
       "전체 페이지 공통 컴포넌트 구조 설계 및 비즈니스 로직 구현",
     ],
     tech: "Webpack, Git, Vue.js, Vue Router, Vuex, SCSS",
+  },
+  {
+    company: "witplus",
+    title: "웹 사이트 유지보수 프로젝트 (다이소몰, 엔터식스 등)",
+    period: "2019. 11. ~ 2023. 03.",
+    role: ["서비스 고도화"],
+    issues: ["레거시 스크립트 오류의 신속한 디버깅 및 실시간 대응 필요"],
+    tasks: [
+      "대형 쇼핑몰 및 유통사 웹/모바일 서비스의 UI/UX 상시 유지보수 및 정기 고도화",
+      "프로모션/이벤트 페이지 긴급 대응 및 신속한 UI 반영",
+      "레거시 마크업 구조 개선 및 스크립트 오류 디버깅",
+    ],
+    tech: "Git, HTML5, CSS3, JavaScript, jQuery, Cross-Browsing",
   },
   {
     company: "witplus",
