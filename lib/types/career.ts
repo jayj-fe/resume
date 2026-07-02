@@ -11,6 +11,8 @@ export interface CareerProjectLink {
   href: string;
 }
 
+export type CareerProjectListItem = string | CareerProjectLink;
+
 export interface CareerProject {
   company: CompanySlug;
   title: string;
@@ -19,7 +21,6 @@ export interface CareerProject {
   issues: string[];
   tasks: string[];
   tech: string;
-  awards?: string[];
-  notes?: string[];
-  links?: CareerProjectLink[];
+  awards?: CareerProjectListItem[];
+  related?: CareerProjectListItem[];
 }

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { TechBadges } from "@/components/tech-badges";
-import type { CareerProject } from "@/lib/types/career";
+import type { CareerProject, CareerProjectListItem } from "@/lib/types/career";
 
 interface CareerSectionProps {
   label: string;
@@ -8,11 +8,39 @@ interface CareerSectionProps {
 }
 
 interface CareerListProps {
-  items: string[];
+  items: CareerProjectListItem[];
 }
 
 interface CareerDetailProps {
   projects: CareerProject[];
+}
+
+function getListItemKey(item: CareerProjectListItem) {
+  if (typeof item === "string") {
+    return item;
+  }
+
+  return item.href;
+}
+
+function CareerListItem({ item }: { item: CareerProjectListItem }) {
+  if (typeof item === "string") {
+    return <li>{item}</li>;
+  }
+
+  return (
+    <li>
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noreferrer"
+        className="career-detail__list-link"
+      >
+        {item.label}
+        <span className="sr-only"> 새 창에서 열기</span>
+      </a>
+    </li>
+  );
 }
 
 function CareerSection({ label, children }: CareerSectionProps) {
@@ -28,7 +56,7 @@ function CareerList({ items }: CareerListProps) {
   return (
     <ul className="career-detail__list">
       {items.map((item) => (
-        <li key={item}>{item}</li>
+        <CareerListItem key={getListItemKey(item)} item={item} />
       ))}
     </ul>
   );
@@ -66,24 +94,11 @@ export function CareerDetail({ projects }: CareerDetailProps) {
             </CareerSection>
           ) : null}
 
-          {project.notes?.map((note) => (
-            <p key={note} className="career-detail__note">
-              {note}
-            </p>
-          ))}
-
-          {project.links?.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-              className="career-detail__link"
-            >
-              {link.label}
-              <span className="sr-only"> 새 창에서 열기</span>
-            </a>
-          ))}
+          {project.related?.length ? (
+            <CareerSection label="관련">
+              <CareerList items={project.related} />
+            </CareerSection>
+          ) : null}
 
           <CareerSection label="사용기술">
             <TechBadges tech={project.tech} />

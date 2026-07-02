@@ -128,11 +128,10 @@ export const careerProjects: CareerProject[] = [
       "사내 토너먼트 대진표 라이브러리(NPM)를 이관·활용하여 대량의 대진표 데이터 안정적 렌더링",
     ],
     tech: "Git, Astro.js, React.js, JavaScript, CSS3, AWS S3, AWS CloudFront(CDN)",
-    notes: ["NPM : 대진표(토너먼트 대진표를 만드는 자바스크립트 라이브러리)"],
-    links: [
+    related: [
       {
-        label: "AstroJS feat 문서",
-        href: "https://hankookilbo.atlassian.net/wiki/spaces/gfhIFYBDZn0f/pages/5533505075/AstroJS+feat",
+        label: "NPM : 대진표(토너먼트 대진표를 만드는 자바스크립트 라이브러리)",
+        href: "https://www.npmjs.com/package/dol-match-bracket",
       },
     ],
   },
@@ -166,8 +165,14 @@ export const careerProjects: CareerProject[] = [
       "CSS 애니메이션을 활용한 정밀한 스크롤 기반 패럴랙스 인터랙션 UI 구현",
     ],
     awards: [
-      "<세월호 참사 10주기> 제42회 관훈언론상 저널리즘 혁신 부문 수상 (2024.12)",
-      "<미씽> 제41회 관훈언론상 저널리즘 혁신 부문 및 제6회 한국 데이터저널리즘 어워드 올해의 데이터 시각화 상 수상 (2023.11~12)",
+      {
+        label: "<세월호 참사 10주기> 제42회 관훈언론상 저널리즘 혁신 부문 수상 (2024.12)",
+        href: "https://interactive.hankookilbo.com/v/sewol-2/",
+      },
+      {
+        label: "<미씽> 제41회 관훈언론상 저널리즘 혁신 부문 및 제6회 한국 데이터저널리즘 어워드 올해의 데이터 시각화 상 수상 (2023.11~12)",
+        href: "https://interactive.hankookilbo.com/v/dementia/",
+      },
     ],
     tech: "Git, Astro.js, React.js, Canvas API, CSS 애니메이션, Firebase",
   },

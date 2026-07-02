@@ -472,6 +472,18 @@ body {
   list-style: disc;
 }
 
+.career-detail__list-link {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 160ms ease;
+}
+
+.career-detail__list-link:hover {
+  color: #b76f58;
+}
+
 .career-detail__note {
   margin-top: 16px;
   color: #4d5d56;
@@ -552,6 +564,10 @@ body {
 .dark .career-detail__tech,
 .dark .career-detail__note {
   color: #cbd5d1;
+}
+
+.dark .career-detail__list-link:hover {
+  color: #e0a894;
 }
 
 .dark .career-detail__link {
