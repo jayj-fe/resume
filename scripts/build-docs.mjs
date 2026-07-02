@@ -12,6 +12,7 @@ const docsDir = path.join(rootDir, "docs");
 const buildEnv = {
   ...process.env,
   GITHUB_PAGES: "true",
+  NEXT_PUBLIC_BASE_PATH: "/resume",
   NEXT_PUBLIC_SITE_URL: "https://jayj-fe.github.io/resume",
 };
 

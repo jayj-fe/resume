@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGitHubPages ? "/resume" : "");
 
 const nextConfig = {
   ...(isGitHubPages
     ? {
         output: "export",
-        basePath: "/resume",
-        assetPrefix: "/resume",
+        basePath,
+        assetPrefix: basePath,
       }
     : {}),
   trailingSlash: true,

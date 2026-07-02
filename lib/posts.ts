@@ -1,5 +1,6 @@
 import { cache } from "react";
 import type { CategoryCount, Post, PostListResponse, RawPost } from "@/lib/types/post";
+import { withBasePath } from "@/lib/site";
 
 const BLOG_API_BASE = "https://jayj-fe.github.io/blogAPI";
 
@@ -9,7 +10,7 @@ const fallbackPosts: RawPost[] = [
     title: "Next.js로 이력서와 블로그 개편하기",
     date: "2026-07-01",
     categories: ["nextjs", "resume"],
-    img: "/favicons/apple-icon-180x180.png",
+    img: withBasePath("/favicons/apple-icon-180x180.png"),
     excerpt:
       "Vue 기반 블로그를 Next.js App Router와 Tailwind CSS 기반 포트폴리오로 재구성한 기록입니다.",
     content: `# Next.js로 이력서와 블로그 개편하기
@@ -38,7 +39,7 @@ function stripHtml(content = "") {
 
 function normalizeAssetUrl(url = "") {
   if (!url) {
-    return "/favicons/apple-icon-180x180.png";
+    return withBasePath("/favicons/apple-icon-180x180.png");
   }
 
   if (url.startsWith("http")) {
@@ -51,6 +52,10 @@ function normalizeAssetUrl(url = "") {
 
   if (url.startsWith("/assets/")) {
     return `${BLOG_API_BASE}${url}`;
+  }
+
+  if (url.startsWith("/")) {
+    return withBasePath(url);
   }
 
   return url;
