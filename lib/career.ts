@@ -1,4 +1,4 @@
-import type { CareerCompany, CareerProject, CompanySlug } from "@/lib/types/career";
+import type { CareerCompany, CareerProject } from "@/lib/types/career";
 
 export type {
   CareerCompany,
@@ -247,7 +247,3 @@ export const careerProjects: CareerProject[] = [
     tech: "HTML5, CSS3, Web Accessibility (WA), 스크린 리더",
   },
 ];
-
-export function getProjectsByCompany(company: CompanySlug): CareerProject[] {
-  return careerProjects.filter((project) => project.company === company);
-}

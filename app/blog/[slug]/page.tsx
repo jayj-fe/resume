@@ -6,7 +6,9 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft, CalendarDays, Tag } from "lucide-react";
 import { BlogSidebar } from "@/components/blog-sidebar";
+import { JsonLd } from "@/components/json-ld";
 import { getCategories, getPostBySlug, getPosts } from "@/lib/posts";
+import { toAbsoluteUrl, toCanonicalPath } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -37,13 +39,13 @@ export async function generateMetadata({
     title: post.title,
     description: post.excerpt,
     alternates: {
-      canonical: `/blog/${post.slug}`,
+      canonical: toCanonicalPath(`/blog/${post.slug}`),
     },
     openGraph: {
       type: "article",
       title: post.title,
       description: post.excerpt,
-      url: `/blog/${post.slug}`,
+      url: toCanonicalPath(`/blog/${post.slug}`),
       publishedTime: post.date,
       tags: post.categories,
       images: post.img
@@ -73,8 +75,26 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     notFound();
   }
 
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: "Jay.J",
+      url: toAbsoluteUrl("/resume"),
+    },
+    image: post.img.startsWith("http") ? post.img : toAbsoluteUrl(post.img),
+    url: toAbsoluteUrl(`/blog/${post.slug}`),
+    mainEntityOfPage: toAbsoluteUrl(`/blog/${post.slug}`),
+    keywords: post.categories.join(", "),
+  };
+
   return (
     <section className="blog-shell">
+      <JsonLd data={blogPostingJsonLd} />
       <BlogSidebar categories={categories} postCount={posts.length} />
       <article id="post-wrapper" className="post-content min-w-0">
         <Link

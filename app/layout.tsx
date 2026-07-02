@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { JsonLd } from "@/components/json-ld";
 import { ScrollToTopButton } from "@/components/scroll-to-top";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jayj-fe.github.io";
+import { siteUrl, toAbsoluteUrl, toCanonicalPath } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -30,12 +30,12 @@ export const metadata: Metadata = {
   ],
   manifest: "/favicons/manifest.json",
   alternates: {
-    canonical: "/resume",
+    canonical: toCanonicalPath("/resume"),
   },
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "/resume",
+    url: toCanonicalPath("/resume"),
     siteName: "Jay.J",
     title: "Jay.J | Front End Developer",
     description:
@@ -83,10 +83,26 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Jay.J",
+  url: siteUrl,
+  description:
+    "프론트엔드 개발자 Jay.J의 이력서, 프로젝트 경험, 기술 기록을 정리한 포트폴리오입니다.",
+  inLanguage: "ko-KR",
+  author: {
+    "@type": "Person",
+    name: "Jay.J",
+    url: toAbsoluteUrl("/resume"),
+  },
+};
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="ko" suppressHydrationWarning>
       <body>
+        <JsonLd data={websiteJsonLd} />
         <a className="skip-link" href="#main-content">
           본문 바로가기
         </a>

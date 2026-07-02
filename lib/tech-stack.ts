@@ -1,4 +1,32 @@
-import * as simpleIcons from "simple-icons";
+import {
+  siAstro,
+  siCloudflare,
+  siCss,
+  siCssmodules,
+  siDatadog,
+  siFirebase,
+  siGit,
+  siGithub,
+  siGoogleanalytics,
+  siGoogletagmanager,
+  siGulp,
+  siHtml5,
+  siJavascript,
+  siJquery,
+  siMui,
+  siMysql,
+  siNextdotjs,
+  siOpenapiinitiative,
+  siPm2,
+  siReact,
+  siReactquery,
+  siSass,
+  siTailwindcss,
+  siTypescript,
+  siVuedotjs,
+  siWebpack,
+  siYarn,
+} from "simple-icons";
 
 export interface TechBadgeItem {
   key: string;
@@ -15,16 +43,37 @@ interface SimpleIconData {
   path: string;
 }
 
-const iconsBySlug = new Map<string, SimpleIconData>();
-
-for (const value of Object.values(simpleIcons)) {
-  if (!value || typeof value !== "object" || !("slug" in value) || !("path" in value)) {
-    continue;
-  }
-
-  const icon = value as SimpleIconData;
-  iconsBySlug.set(icon.slug, icon);
-}
+const iconsBySlug = new Map<string, SimpleIconData>(
+  [
+    siAstro,
+    siCloudflare,
+    siCss,
+    siCssmodules,
+    siDatadog,
+    siFirebase,
+    siGit,
+    siGithub,
+    siGoogleanalytics,
+    siGoogletagmanager,
+    siGulp,
+    siHtml5,
+    siJavascript,
+    siJquery,
+    siMui,
+    siMysql,
+    siNextdotjs,
+    siOpenapiinitiative,
+    siPm2,
+    siReact,
+    siReactquery,
+    siSass,
+    siTailwindcss,
+    siTypescript,
+    siVuedotjs,
+    siWebpack,
+    siYarn,
+  ].map((icon) => [icon.slug, icon]),
+);
 
 const TECH_SLUG_ALIASES: Record<string, string> = {
   astro: "astro",
@@ -65,7 +114,7 @@ const TECH_SLUG_ALIASES: Record<string, string> = {
   tailwind: "tailwindcss",
   "tailwind css": "tailwindcss",
   typescript: "typescript",
-  "usecontext": "react",
+  usecontext: "react",
   vue: "vuedotjs",
   "vue.js": "vuedotjs",
   "vue router": "vuerouter",
