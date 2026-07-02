@@ -5,7 +5,7 @@ import { Github, Linkedin, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "/resume", label: "Home" },
+  { href: "/", label: "Home" },
   { href: "/blog", label: "Blog" },
 ] as const;
 
@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-paper/90 backdrop-blur dark:border-slate-800 dark:bg-midnight/90">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link href="/resume" className="text-base font-black text-ink dark:text-white">
+        <Link href="/" className="text-base font-black text-ink dark:text-white">
           Jay.J
         </Link>
         <nav aria-label="Primary navigation" className="flex items-center gap-1">

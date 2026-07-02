@@ -1,4 +1,5 @@
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jayj-fe.github.io";
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://jayj-fe.github.io/resume";
 
 export function toCanonicalPath(path: string) {
   const normalized = path.startsWith("/") ? path : `/${path}`;

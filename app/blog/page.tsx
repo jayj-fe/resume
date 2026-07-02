@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { BlogList } from "@/components/blog-list";
-import { BlogSidebar } from "@/components/blog-sidebar";
+import { BlogPageClient } from "@/components/blog-page-client";
 import { getCategories, getPosts } from "@/lib/posts";
 import { toCanonicalPath } from "@/lib/site";
 
@@ -19,31 +18,9 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600;
-
-interface BlogPageProps {
-  searchParams?: {
-    category?: string;
-  };
-}
-
-export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const selectedCategory = searchParams?.category;
+export default async function BlogPage() {
   const allPosts = await getPosts();
-  const posts = allPosts.filter((post) =>
-    selectedCategory ? post.categories.includes(selectedCategory) : true,
-  );
   const categories = getCategories(allPosts);
 
-  return (
-    <section className="blog-shell">
-      <BlogSidebar
-        categories={categories}
-        postCount={allPosts.length}
-        selectedCategory={selectedCategory}
-      />
-
-      <BlogList posts={posts} selectedCategory={selectedCategory} />
-    </section>
-  );
+  return <BlogPageClient allPosts={allPosts} categories={categories} />;
 }

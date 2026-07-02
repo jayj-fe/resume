@@ -30,12 +30,12 @@ export const metadata: Metadata = {
   ],
   manifest: "/favicons/manifest.json",
   alternates: {
-    canonical: toCanonicalPath("/resume"),
+    canonical: toCanonicalPath("/"),
   },
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: toCanonicalPath("/resume"),
+    url: toCanonicalPath("/"),
     siteName: "Jay.J",
     title: "Jay.J | Front End Developer",
     description:
@@ -94,7 +94,7 @@ const websiteJsonLd = {
   author: {
     "@type": "Person",
     name: "Jay.J",
-    url: toAbsoluteUrl("/resume"),
+    url: toAbsoluteUrl("/"),
   },
 };
 

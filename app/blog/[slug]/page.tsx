@@ -10,8 +10,6 @@ import { JsonLd } from "@/components/json-ld";
 import { getCategories, getPostBySlug, getPosts } from "@/lib/posts";
 import { toAbsoluteUrl, toCanonicalPath } from "@/lib/site";
 
-export const revalidate = 3600;
-
 interface BlogDetailPageProps {
   params: {
     slug: string;
@@ -84,7 +82,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     author: {
       "@type": "Person",
       name: "Jay.J",
-      url: toAbsoluteUrl("/resume"),
+      url: toAbsoluteUrl("/"),
     },
     image: post.img.startsWith("http") ? post.img : toAbsoluteUrl(post.img),
     url: toAbsoluteUrl(`/blog/${post.slug}`),

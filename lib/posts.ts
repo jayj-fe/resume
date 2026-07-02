@@ -89,9 +89,7 @@ function normalizePost(post: RawPost): Post {
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, {
-    next: { revalidate: 3600 },
-  });
+  const res = await fetch(url);
 
   if (!res.ok) {
     throw new Error(`Failed to fetch ${url}: ${res.status}`);
@@ -101,9 +99,7 @@ async function fetchJson<T>(url: string): Promise<T> {
 }
 
 async function fetchText(url: string) {
-  const res = await fetch(url, {
-    next: { revalidate: 3600 },
-  });
+  const res = await fetch(url);
 
   if (!res.ok) {
     throw new Error(`Failed to fetch ${url}: ${res.status}`);

@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: toAbsoluteUrl("/resume"),
+      url: toAbsoluteUrl("/"),
       lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
