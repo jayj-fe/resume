@@ -1,8 +1,9 @@
 import { cache } from "react";
+import type { CategoryCount, Post, PostListResponse, RawPost } from "@/lib/types/post";
 
 const BLOG_API_BASE = "https://jayj-fe.github.io/blogAPI";
 
-const fallbackPosts = [
+const fallbackPosts: RawPost[] = [
   {
     slug: "next-resume-renewal",
     title: "Next.js로 이력서와 블로그 개편하기",
@@ -69,7 +70,7 @@ function slugFromUrl(url = "") {
     .replace(/\.(md|html|vue)$/i, "");
 }
 
-function normalizePost(post) {
+function normalizePost(post: RawPost): Post {
   const slug = post.slug || slugFromUrl(post.url || post.path || "");
   const content = normalizeContent(post.content || post.con || "");
   const excerpt = post.excerpt || post.description || stripHtml(content).slice(0, 150);
@@ -87,7 +88,7 @@ function normalizePost(post) {
   };
 }
 
-async function fetchJson(url) {
+async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url, {
     next: { revalidate: 3600 },
   });
@@ -96,10 +97,10 @@ async function fetchJson(url) {
     throw new Error(`Failed to fetch ${url}: ${res.status}`);
   }
 
-  return res.json();
+  return res.json() as Promise<T>;
 }
 
-async function fetchText(url) {
+async function fetchText(url: string) {
   const res = await fetch(url, {
     next: { revalidate: 3600 },
   });
@@ -111,16 +112,18 @@ async function fetchText(url) {
   return res.text();
 }
 
-export const getPosts = cache(async function getPosts() {
+export const getPosts = cache(async function getPosts(): Promise<Post[]> {
   try {
-    const parsed = await fetchJson(`${BLOG_API_BASE}/postlist.json`);
+    const parsed = await fetchJson<RawPost[] | PostListResponse>(
+      `${BLOG_API_BASE}/postlist.json`,
+    );
     const list = Array.isArray(parsed) ? parsed : parsed.postlist;
 
     if (Array.isArray(list) && list.length > 0) {
       return list
         .map(normalizePost)
         .filter((post) => post.slug)
-        .sort((a, b) => new Date(b.date) - new Date(a.date));
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }
   } catch (error) {
     console.warn(error);
@@ -129,10 +132,12 @@ export const getPosts = cache(async function getPosts() {
   return fallbackPosts
     .map(normalizePost)
     .filter((post) => post.slug)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 });
 
-export const getPostBySlug = cache(async function getPostBySlug(slug) {
+export const getPostBySlug = cache(async function getPostBySlug(
+  slug: string,
+): Promise<Post | null> {
   const posts = await getPosts();
   const post = posts.find((item) => item.slug === slug);
 
@@ -153,8 +158,8 @@ export const getPostBySlug = cache(async function getPostBySlug(slug) {
   }
 });
 
-export function getCategories(posts) {
-  const counts = new Map();
+export function getCategories(posts: Post[]): CategoryCount[] {
+  const counts = new Map<string, number>();
 
   posts.forEach((post) => {
     post.categories.forEach((category) => {

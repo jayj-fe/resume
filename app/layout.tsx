@@ -1,10 +1,12 @@
+import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { ScrollToTopButton } from "@/components/scroll-to-top";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jayj-fe.github.io";
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: "Jay.J | Front End Developer",
@@ -77,7 +79,11 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="ko" suppressHydrationWarning>
       <body>

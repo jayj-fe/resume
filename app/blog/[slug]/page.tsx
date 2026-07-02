@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -9,13 +10,21 @@ import { getCategories, getPostBySlug, getPosts } from "@/lib/posts";
 
 export const revalidate = 3600;
 
+interface BlogDetailPageProps {
+  params: {
+    slug: string;
+  };
+}
+
 export async function generateStaticParams() {
   const posts = await getPosts();
 
   return posts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({
+  params,
+}: BlogDetailPageProps): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
 
   if (!post) {
@@ -55,7 +64,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function BlogDetailPage({ params }) {
+export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const post = await getPostBySlug(params.slug);
   const posts = await getPosts();
   const categories = getCategories(posts);
@@ -67,10 +76,7 @@ export default async function BlogDetailPage({ params }) {
   return (
     <section className="blog-shell">
       <BlogSidebar categories={categories} postCount={posts.length} />
-      <article
-        id="post-wrapper"
-        className="post-content min-w-0"
-      >
+      <article id="post-wrapper" className="post-content min-w-0">
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-sm font-bold text-slate-600 transition hover:text-moss dark:text-slate-300 dark:hover:text-[#9bbf95]"

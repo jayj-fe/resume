@@ -1,10 +1,11 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Mail } from "lucide-react";
 import { CareerDetail } from "@/components/career-detail";
 import { CareerSidebar } from "@/components/career-sidebar";
-import { careerCompanies, careerProjects } from "@/lib/career";
+import { careerProjects } from "@/lib/career";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Resume",
   description:
     "프론트엔드 개발자 Jay.J의 경력, 주요 프로젝트, 기술 스택을 정리한 이력서입니다.",
@@ -56,14 +57,7 @@ export default function ResumePage() {
       <section className="blog-shell !px-0 !pt-0">
         <CareerSidebar />
         <div className="min-w-0">
-          <h2 className="sr-only">경력 상세</h2>
-          {careerCompanies.map((company) => (
-            <CareerDetail
-              key={company.slug}
-              company={company}
-              projects={careerProjects[company.slug]}
-            />
-          ))}
+          <CareerDetail projects={careerProjects} />
         </div>
       </section>
     </section>

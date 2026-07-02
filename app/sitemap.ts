@@ -1,8 +1,9 @@
+import type { MetadataRoute } from "next";
 import { getPosts } from "@/lib/posts";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jayj-fe.github.io";
 
-export default async function sitemap() {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPosts();
   const now = new Date();
 
@@ -22,7 +23,7 @@ export default async function sitemap() {
     ...posts.map((post) => ({
       url: `${siteUrl}/blog/${post.slug}`,
       lastModified: post.date ? new Date(post.date) : now,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
   ];

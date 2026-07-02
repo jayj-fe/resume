@@ -1,4 +1,25 @@
-function CareerSection({ label, children }) {
+import type { ReactNode } from "react";
+import { careerCompanies } from "@/lib/career";
+import type { CareerProject } from "@/lib/types/career";
+
+interface CareerSectionProps {
+  label: string;
+  children: ReactNode;
+}
+
+interface CareerListProps {
+  items: string[];
+}
+
+interface CareerDetailProps {
+  projects: CareerProject[];
+}
+
+const companyLabelBySlug = Object.fromEntries(
+  careerCompanies.map((company) => [company.slug, company.label]),
+);
+
+function CareerSection({ label, children }: CareerSectionProps) {
   return (
     <div className="career-detail__section">
       <h4 className="career-detail__label">{label}</h4>
@@ -7,7 +28,7 @@ function CareerSection({ label, children }) {
   );
 }
 
-function CareerList({ items }) {
+function CareerList({ items }: CareerListProps) {
   return (
     <ul className="career-detail__list">
       {items.map((item) => (
@@ -17,16 +38,14 @@ function CareerList({ items }) {
   );
 }
 
-export function CareerDetail({ company, projects = [] }) {
+export function CareerDetail({ projects }: CareerDetailProps) {
   return (
-    <section className="career-detail" aria-labelledby={`career-${company.slug}`}>
-      <h3 id={`career-${company.slug}`} className="sr-only">
-        {company.label} 경력
-      </h3>
+    <section className="career-detail" aria-label="경력 상세">
       {projects.map((project) => (
-        <article key={project.title} className="career-detail__item">
+        <article key={`${project.company}-${project.title}`} className="career-detail__item">
           <header>
-            <h4 className="career-detail__title">{project.title}</h4>
+            {/* <p className="career-detail__company"># {companyLabelBySlug[project.company]}</p> */}
+            <h3 className="career-detail__title">{project.title}</h3>
             <p className="career-detail__period">
               <span className="sr-only">기간: </span>
               {project.period}

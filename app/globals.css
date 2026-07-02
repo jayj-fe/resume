@@ -228,10 +228,22 @@ body {
 }
 
 .blog-sidebar__text {
+  display: grid;
+  gap: 4px;
   color: #5f6f66;
   font-size: 14px;
   font-weight: 800;
   line-height: 1.5;
+}
+
+.blog-sidebar__company {
+  color: #5f6f66;
+}
+
+.blog-sidebar__period {
+  color: #9aa6a0;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .blog-list__items {
@@ -370,6 +382,14 @@ body {
   color: #cbd5d1;
 }
 
+.dark .blog-sidebar__company {
+  color: #cbd5d1;
+}
+
+.dark .blog-sidebar__period {
+  color: #94a3b8;
+}
+
 .dark .blog-sidebar__link:hover,
 .dark .blog-sidebar__link.is-active,
 .dark .blog-card__category,
@@ -404,6 +424,14 @@ body {
 .career-detail__item:last-child {
   padding-bottom: 0;
   border-bottom: 0;
+}
+
+.career-detail__company {
+  margin-bottom: 8px;
+  color: #647a61;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 .career-detail__title {
@@ -472,6 +500,10 @@ body {
 
 .dark .career-detail__item {
   border-color: #1f2937;
+}
+
+.dark .career-detail__company {
+  color: #9bbf95;
 }
 
 .dark .career-detail__title,

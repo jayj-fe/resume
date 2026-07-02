@@ -4,13 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarDays, Loader2, Tag } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { Post } from "@/lib/types/post";
 
 const INITIAL_VISIBLE_COUNT = 10;
 const LOAD_STEP = 10;
 
-export function BlogList({ posts, selectedCategory }) {
+interface BlogListProps {
+  posts: Post[];
+  selectedCategory?: string;
+}
+
+export function BlogList({ posts, selectedCategory }: BlogListProps) {
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
-  const sentinelRef = useRef(null);
+  const sentinelRef = useRef<HTMLDivElement>(null);
   const listKey = useMemo(
     () => `${selectedCategory || "all"}:${posts.map((post) => post.slug).join("|")}`,
     [posts, selectedCategory],
@@ -54,10 +60,7 @@ export function BlogList({ posts, selectedCategory }) {
     <div className="blog-list">
       <div className="blog-list__items">
         {visiblePosts.map((post) => (
-          <article
-            key={post.slug}
-            className="blog-card"
-          >
+          <article key={post.slug} className="blog-card">
             <div className="blog-card__inner">
               <Link
                 href={`/blog/${post.slug}`}
@@ -86,19 +89,14 @@ export function BlogList({ posts, selectedCategory }) {
                     </Link>
                   ))}
                 </div>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="blog-card__title"
-                >
+                <Link href={`/blog/${post.slug}`} className="blog-card__title">
                   {post.title}
                 </Link>
                 <time className="blog-card__date" dateTime={post.date}>
                   <CalendarDays size={15} aria-hidden />
                   {post.date}
                 </time>
-                <p className="blog-card__excerpt">
-                  {post.excerpt}
-                </p>
+                <p className="blog-card__excerpt">{post.excerpt}</p>
               </div>
             </div>
           </article>

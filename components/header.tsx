@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const links = [
   { href: "/resume", label: "Home" },
   { href: "/blog", label: "Blog" },
-];
+] as const;
 
 export function Header() {
   const [darkMode, setDarkMode] = useState(false);
@@ -21,7 +21,7 @@ export function Header() {
     setDarkMode(shouldUseDark);
   }, []);
 
-  function toggleTheme() {
+  function onToggleTheme() {
     const nextTheme = !darkMode;
     document.documentElement.classList.toggle("dark", nextTheme);
     window.localStorage.setItem("theme", nextTheme ? "dark" : "light");
@@ -66,7 +66,7 @@ export function Header() {
           </a>
           <button
             type="button"
-            onClick={toggleTheme}
+            onClick={onToggleTheme}
             aria-label={darkMode ? "라이트 모드로 변경" : "다크 모드로 변경"}
             title={darkMode ? "Light mode" : "Dark mode"}
             className="flex h-9 w-9 items-center justify-center rounded-md text-slate-700 transition hover:bg-white hover:text-moss dark:text-slate-200 dark:hover:bg-slate-900 dark:hover:text-[#9bbf95]"

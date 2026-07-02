@@ -1,6 +1,17 @@
 import Link from "next/link";
+import type { CategoryCount } from "@/lib/types/post";
 
-export function BlogSidebar({ categories, postCount, selectedCategory }) {
+interface BlogSidebarProps {
+  categories: CategoryCount[];
+  postCount: number;
+  selectedCategory?: string;
+}
+
+export function BlogSidebar({
+  categories,
+  postCount,
+  selectedCategory,
+}: BlogSidebarProps) {
   return (
     <aside className="blog-sidebar" aria-labelledby="blog-sidebar-title">
       <h2 id="blog-sidebar-title" className="blog-sidebar__title">
