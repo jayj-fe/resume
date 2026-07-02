@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { JsonLd } from "@/components/json-ld";
 import { ScrollToTopButton } from "@/components/scroll-to-top";
-import { siteUrl, toAbsoluteUrl, toCanonicalPath } from "@/lib/site";
+import { siteUrl, toAbsoluteUrl, toCanonicalPath, withBasePath } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     "이력서",
     "포트폴리오",
   ],
-  manifest: "/favicons/manifest.json",
   alternates: {
     canonical: toCanonicalPath("/"),
   },
@@ -42,7 +41,7 @@ export const metadata: Metadata = {
       "프론트엔드 개발자 Jay.J의 이력서, 프로젝트 경험, 기술 기록을 정리한 포트폴리오입니다.",
     images: [
       {
-        url: "/favicons/logo-profile.png",
+        url: withBasePath("/favicons/logo-profile.png"),
         width: 512,
         height: 512,
         alt: "Jay.J 프로필 이미지",
@@ -54,7 +53,7 @@ export const metadata: Metadata = {
     title: "Jay.J | Front End Developer",
     description:
       "프론트엔드 개발자 Jay.J의 이력서, 프로젝트 경험, 기술 기록을 정리한 포트폴리오입니다.",
-    images: ["/favicons/logo-profile.png"],
+    images: [withBasePath("/favicons/logo-profile.png")],
   },
   robots: {
     index: true,
@@ -69,12 +68,16 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicons/favicon.ico" },
+      { url: withBasePath("/favicons/favicon-16x16.png"), sizes: "16x16", type: "image/png" },
+      { url: withBasePath("/favicons/favicon-32x32.png"), sizes: "32x32", type: "image/png" },
+      { url: withBasePath("/favicons/favicon.ico") },
     ],
     apple: [
-      { url: "/favicons/apple-icon-180x180.png", sizes: "180x180", type: "image/png" },
+      {
+        url: withBasePath("/favicons/apple-icon-180x180.png"),
+        sizes: "180x180",
+        type: "image/png",
+      },
     ],
   },
 };

@@ -4,7 +4,7 @@ import { CareerDetail } from "@/components/career-detail";
 import { CareerSidebar } from "@/components/career-sidebar";
 import { JsonLd } from "@/components/json-ld";
 import { careerProjects } from "@/lib/career";
-import { toAbsoluteUrl } from "@/lib/site";
+import { toAbsoluteUrl, withBasePath } from "@/lib/site";
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -28,7 +28,7 @@ export function ResumeHome() {
         <aside className="flex-shrink-0" aria-label="프로필 이미지">
           <div className="relative aspect-square h-[96px] w-[96px] sm:h-[160px] sm:w-[160px]">
             <Image
-              src="/favicons/logo-profile.png"
+              src={withBasePath("/favicons/logo-profile.png")}
               alt="Jay.J 프로필 이미지"
               fill
               sizes="(min-width: 640px) 160px, 96px"
