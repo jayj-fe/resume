@@ -239,7 +239,7 @@ export const careerProjects: CareerProject[] = [
   {
     company: "cidow",
     title: "공공기관/기업 웹 접근성 프로젝트",
-    period: "2015. 11. ~ 2016. 04.",
+    period: "2015. 11. ~ 2016. 11.",
     role: ["UI 개발", "웹 접근성 진단 및 개선"],
     issues: [
       "공공기관 사이트(국방부)의 국가 지정 웹 접근성 의무 준수 가이드라인을 충족해야 하는 이슈 존재",
