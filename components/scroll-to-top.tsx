@@ -2,13 +2,19 @@
 
 import { ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useIsCvPage } from "@/hooks/use-is-cv-page";
 
 const SCROLL_OFFSET_PX = 400;
 
 export function ScrollToTopButton() {
+  const isCvPage = useIsCvPage();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    if (isCvPage) {
+      return;
+    }
+
     function onScroll() {
       setIsVisible(window.scrollY > SCROLL_OFFSET_PX);
     }
@@ -19,13 +25,13 @@ export function ScrollToTopButton() {
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [isCvPage]);
 
   function onClick() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  if (!isVisible) {
+  if (isCvPage || !isVisible) {
     return null;
   }
 
