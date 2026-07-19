@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Github, Linkedin, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useIsCvPage } from "@/hooks/use-is-cv-page";
 
 const links = [
   { href: "/", label: "Home" },
@@ -10,6 +11,7 @@ const links = [
 ] as const;
 
 export function Header() {
+  const isCvPage = useIsCvPage();
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -26,6 +28,10 @@ export function Header() {
     document.documentElement.classList.toggle("dark", nextTheme);
     window.localStorage.setItem("theme", nextTheme ? "dark" : "light");
     setDarkMode(nextTheme);
+  }
+
+  if (isCvPage) {
+    return null;
   }
 
   return (

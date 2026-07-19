@@ -441,6 +441,10 @@ body {
   line-height: 1.35;
 }
 
+.cv-career-detail .career-detail__title {
+  font-size: 18px;
+}
+
 .career-detail__period {
   margin-top: 8px;
   color: #718079;
@@ -598,5 +602,34 @@ body {
     padding-bottom: 0;
     border-right: 1px solid #dde4dc;
     border-bottom: 0;
+  }
+}
+
+@media print {
+  .no-print,
+  .skip-link,
+  .scroll-to-top {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #1f2933 !important;
+  }
+
+  .cv-page {
+    max-width: 100% !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .cv-page a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  .career-detail__item,
+  .cv-page li {
+    break-inside: avoid;
   }
 }
