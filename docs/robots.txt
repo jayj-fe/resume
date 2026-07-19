@@ -1,4 +1,6 @@
 User-Agent: *
 Allow: /
+Disallow: /cv/
+Disallow: /cv
 
 Sitemap: https://jayj-fe.github.io/resume/sitemap.xml

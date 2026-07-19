@@ -606,7 +606,6 @@ body {
 }
 
 @media print {
-  .no-print,
   .skip-link,
   .scroll-to-top {
     display: none !important;
